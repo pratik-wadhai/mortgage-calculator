@@ -1,3 +1,13 @@
+import Calculator from "./components/Calculator";
+import Result from "./components/Result";
+
 export default function App() {
-  return <h1 className="text-3xl font-bold text-red-500">Hello world!</h1>;
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-[#f0f7ff] p-4">
+      <div className="bg-white rounded-3xl shadow-xl flex max-w-4xl w-full overflow-hidden">
+        <Calculator />
+        <Result />
+      </div>
+    </div>
+  );
 }
