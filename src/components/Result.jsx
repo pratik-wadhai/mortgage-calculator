@@ -1,10 +1,9 @@
 import React from "react";
 
 const Result = ({ result }) => {
-  console.log("Result component received:", result);
   if (!result) {
     return (
-      <div className="bg-[#0c2744] text-white p-8 w-3/5 flex flex-col justify-center items-center">
+      <div className="bg-[#133041] text-white p-8 w-3/5 flex flex-col justify-center items-center">
         <div className="mb-8">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -205,14 +204,14 @@ const Result = ({ result }) => {
   }
 
   return (
-    <div className="w-1/2 bg-[#0c2744] text-white p-6 rounded-r-2xl">
+    <div className="w-1/2 bg-[#133041] text-white p-8 border-t-2 rounded-t-2xl">
       <h2 className="text-2xl font-bold mb-4">Your Results</h2>
-      <p className=" text-smtext-gray-300 mb-6">
+      <p className=" text-sm text-gray-300 mb-6">
         Your results are shown below based on the information you provided. To
         adjust the results, edit the form and click "calculate repayments"
         again.
       </p>
-      <div className="bg-[#0a1f35] p-6 rounded-lg">
+      <div className="bg-[#0d2330] p-9 rounded-lg pt-6 border-t-4 border-[#e8fd5f]">
         <h3 className="text-sm font-medium text-gray-300 mb-2">
           Your Monthly Repayment
         </h3>
