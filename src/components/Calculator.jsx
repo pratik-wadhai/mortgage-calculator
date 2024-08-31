@@ -5,10 +5,23 @@ const Calculator = ({ setResult }) => {
   const [mortgageTerm, setMortgageTerm] = useState("");
   const [interestRate, setInterestRate] = useState("");
   const [mortgageType, setMortgageType] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState({});
 
   const handleCalculate = () => {
     // Implement calculation logic here
+
+    const newError = {};
+
+    if (!mortgageAmount) newError.mortgageAmount = "This field is required";
+    if (!mortgageTerm) newError.mortgageTerm = "This field is required";
+    if (!interestRate) newError.interestRate = "This field is required";
+    if (!mortgageType) newError.mortgageType = "This field is required";
+
+    setError(newError);
+
+    if (Object.keys(newError).length > 0) {
+      return;
+    }
 
     const amount = parseFloat(mortgageAmount);
     const term = parseInt(mortgageTerm);
@@ -16,24 +29,6 @@ const Calculator = ({ setResult }) => {
     const numberOfPayments = term * 12;
 
     let monthlyPayment, totalRepayment;
-
-    // if (!mortgageAmount) {
-    //   setError("This field is required");
-    //   return;
-    // }
-    // if (!mortgageTerm) {
-    //   setError("This field is required");
-    //   return;
-    // }
-    // if (!interestRate) {
-    //   setError("This field is required");
-    //   return;
-    // }
-    // if (!mortgageType) {
-    //   setError("This field is required");
-    //   return;
-    // }
-    // setError("");
 
     if (mortgageType === "repayment") {
       monthlyPayment =
@@ -87,8 +82,10 @@ const Calculator = ({ setResult }) => {
             />
           </div>
         </div>
-        {error && (
-          <div className="mt-2 text-red-600 text-left font-small">{error}</div>
+        {error.mortgageAmount && (
+          <div className="mt-2 text-red-600 text-left text-sm">
+            {error.mortgageAmount}
+          </div>
         )}
 
         <div className="flex space-x-4">
@@ -110,12 +107,13 @@ const Calculator = ({ setResult }) => {
                 years
               </span>
             </div>
-            {!mortgageTerm && (
-              <div className="mt-2 text-red-600 text-left font-small">
-                This field is required
+            {error.mortgageTerm && (
+              <div className="mt-2 text-red-600 text-left text-sm">
+                {error.mortgageTerm}
               </div>
             )}
           </div>
+
           <div className="w-1/2">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Interest Rate
@@ -134,9 +132,9 @@ const Calculator = ({ setResult }) => {
                 %
               </span>
             </div>
-            {error && (
-              <div className="mt-2 text-red-600 text-left font-small">
-                {error}
+            {error.interestRate && (
+              <div className="mt-2 text-red-600 text-left text-sm">
+                {error.interestRate}
               </div>
             )}
           </div>
@@ -182,8 +180,10 @@ const Calculator = ({ setResult }) => {
           </div>
         </div>
       </div>
-      {error && (
-        <div className="mt-2 text-red-600 text-left font-small">{error}</div>
+      {error.mortgageType && (
+        <div className="mt-1 text-red-600 text-left text-sm">
+          {error.mortgageType}
+        </div>
       )}
 
       <div className="flex justify-center items-center w-4/6 mx-16  text-gray-800 mt-6 py-3 rounded-2xl font-medium bg-[#d7da2f] hover:bg-[#afb21f] transition duration-300 ">
