@@ -204,7 +204,7 @@ const Result = ({ result }) => {
   }
 
   return (
-    <div className="w-1/2 bg-[#133041] text-white p-8 border-t-2 rounded-t-2xl">
+    <div className="w-3/5 bg-[#133041] text-white p-8 border-t-2 rounded-t-2xl">
       <h2 className="text-2xl font-bold mb-4">Your Results</h2>
       <p className=" text-sm text-gray-300 mb-6">
         Your results are shown below based on the information you provided. To

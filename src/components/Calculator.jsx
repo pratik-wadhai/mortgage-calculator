@@ -56,8 +56,9 @@ const Calculator = ({ setResult }) => {
             setMortgageAmount("");
             setMortgageTerm("");
             setInterestRate("");
-            setMortgageType("repayment");
+            setMortgageType("");
             setResult(null);
+            setError({});
           }}
         >
           Clear All
@@ -70,14 +71,20 @@ const Calculator = ({ setResult }) => {
             Mortgage Amount
           </label>
           <div className="relative">
-            <span className="absolute font-semibold inset-y-0 left-0 flex items-center  pl-3 pointer-events-none bg-[#e3f4fc] rounded-l-md px-3">
+            <span
+              className={`absolute font-semibold inset-y-0 left-0 flex items-center  pl-3 pointer-events-none rounded-l-md px-3 ${
+                error.mortgageAmount ? "bg-red-500" : "bg-[#e3f4fc]"
+              }`}
+            >
               £
             </span>
             <input
               type="number"
               value={mortgageAmount}
               onChange={(e) => setMortgageAmount(e.target.value)}
-              className="pl-12 pr-4 py-2 w-full border border-gray-300 rounded-md "
+              className={`pl-12 pr-4 py-2 w-full border rounded-md hover:border-[#d7da2f] ${
+                error.mortgageAmount ? "border-red-500" : "border-gray-300"
+              }`}
               placeholder="Enter amount"
             />
           </div>
@@ -98,11 +105,13 @@ const Calculator = ({ setResult }) => {
                 type="number"
                 value={mortgageTerm}
                 onChange={(e) => setMortgageTerm(e.target.value)}
-                className="w-2/3 border border-gray-300 rounded-l-md px-3 py-2 focus:border-transparent  focus:ring-0"
+                className="w-2/3 border border-gray-300 rounded-l-md px-3 py-2 focus:border-transparent  hover:border-[#d7da2f]"
               />
               <span
-                className="w-1/3 inline-flex items-center px-3 bg-[#e3f4fc] text-gray-700 border border-l-0
-               border-gray-300 rounded-r-md font-semibold"
+                className={`w-1/3 inline-flex items-center px-3 ${
+                  error.mortgageTerm ? "bg-red-500" : "bg-[#e3f4fc]"
+                } text-gray-700 border border-l-0
+               border-gray-300 rounded-r-md font-semibold`}
               >
                 years
               </span>
@@ -123,11 +132,13 @@ const Calculator = ({ setResult }) => {
                 type="number"
                 value={interestRate}
                 onChange={(e) => setInterestRate(e.target.value)}
-                className="w-2/3 border border-gray-300 rounded-l-md px-3 py-2 focus:ring-2 focus:ring-[#e8fd5f] focus:border-transparent"
+                className="w-2/3 border border-gray-300 rounded-l-md px-3 py-2  focus:border-transparent hover:border-[#d7da2f]"
               />
               <span
-                className="w-1/3 inline-flex items-center px-3 bg-[#e3f4fc] text-gray-700 border border-l-0
-               border-gray-300 rounded-r-md font-semibold"
+                className={`w-1/1 inline-flex items-center px-3 ${
+                  error.interestRate ? "bg-red-500" : "bg-[#e3f4fc]"
+                } text-gray-700 border border-l-0
+               border-gray-300 rounded-r-md font-semibold`}
               >
                 %
               </span>
