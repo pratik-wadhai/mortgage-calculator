@@ -3,7 +3,7 @@ import React from "react";
 const Result = ({ result }) => {
   if (!result) {
     return (
-      <div className="bg-[#133041] text-white p-8 w-3/5 flex flex-col justify-center items-center">
+      <div className="bg-[#133041] text-white p-8 w-3/5 flex flex-col justify-center items-center rounded-bl-[7rem]">
         <div className="mb-8">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -204,7 +204,7 @@ const Result = ({ result }) => {
   }
 
   return (
-    <div className="w-3/5 bg-[#133041] text-white p-8 border-t-2 rounded-t-2xl">
+    <div className="w-3/5 bg-[#133041] text-white p-8 border-t-2 rounded-bl-[7rem]   ">
       <h2 className="text-2xl font-bold mb-4">Your Results</h2>
       <p className=" text-sm text-gray-300 mb-6">
         Your results are shown below based on the information you provided. To
